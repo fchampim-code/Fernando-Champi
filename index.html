@@ -2,25 +2,78 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Seguimiento Procura G2G</title>
+  <title>Gestor de Tableros Power BI</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <style>
-    body{font-family:Arial,Helvetica,sans-serif;margin:0}
-    nav{background:#00215B;padding:10px}
-    nav h1{color:white;font-size:18px;margin:0}
-    iframe{width:100%;height:90vh;border:0}
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      height: 100vh;
+    }
+    /* Menú lateral */
+    .sidebar {
+      width: 220px;
+      background: #00215B;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      padding: 20px 0;
+    }
+    .sidebar h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+    .sidebar a {
+      color: white;
+      padding: 12px 20px;
+      text-decoration: none;
+      display: block;
+      transition: background 0.3s;
+    }
+    .sidebar a:hover {
+      background: #0141A1;
+    }
+    /* Contenedor del visor */
+    .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    iframe {
+      flex: 1;
+      border: none;
+      width: 100%;
+    }
   </style>
 </head>
 <body>
-  <nav>
-    <h1>Seguimiento Procura G2G</h1>
-  </nav>
+  <!-- Menú lateral -->
+  <div class="sidebar">
+    <h2>Mis Dashboards</h2>
+    <a href="#" onclick="cargar('d1')">Procura G2G</a>
+    <a href="#" onclick="cargar('d2')">Finanzas</a>
+    <a href="#" onclick="cargar('d3')">Proyectos</a>
+  </div>
 
-  <iframe title="Seguimiento Procura G2G"
-    src="https://app.powerbi.com/reportEmbed?reportId=831c0fba-7ea8-4e5c-8c4c-d3c4efa1fe7d&autoAuth=true&ctid=47d37aff-a534-4d6c-ac3c-2d4786fb5ebf&actionBarEnabled=true&reportCopilotInEmbed=true"
-    frameborder="0"
-    allowFullScreen="true">
-  </iframe>
+  <!-- Contenido -->
+  <div class="content">
+    <iframe id="visor"></iframe>
+  </div>
 
+  <script>
+    const links = {
+      "d1": "https://app.powerbi.com/reportEmbed?reportId=831c0fba-7ea8-4e5c-8c4c-d3c4efa1fe7d&autoAuth=true&ctid=47d37aff-a534-4d6c-ac3c-2d4786fb5ebf&actionBarEnabled=true&reportCopilotInEmbed=true",
+      "d2": "https://app.powerbi.com/view?r=URL_DEL_TABLERO_2",
+      "d3": "https://app.powerbi.com/view?r=URL_DEL_TABLERO_3"
+    };
+    function cargar(k){ 
+      document.getElementById('visor').src = links[k]; 
+    }
+    // carga inicial
+    cargar('d1');
+  </script>
 </body>
 </html>
+
