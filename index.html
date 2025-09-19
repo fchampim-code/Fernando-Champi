@@ -1,79 +1,76 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <title>Gestor de Tableros Power BI</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8">
+  <title>Seguimiento Procura G2G</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       display: flex;
-      height: 100vh;
     }
+
     /* Menú lateral */
-    .sidebar {
-      width: 220px;
-      background: #00215B;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      padding: 20px 0;
+    nav {
+      width: 200px;
+      background-color: #00215B;
+      height: 100vh; /* toda la altura de la pantalla */
+      padding-top: 20px;
     }
-    .sidebar h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 18px;
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
     }
-    .sidebar a {
-      color: white;
-      padding: 12px 20px;
-      text-decoration: none;
+
+    nav ul li {
+      margin: 10px 0;
+    }
+
+    nav ul li a {
       display: block;
-      transition: background 0.3s;
+      color: white;
+      text-decoration: none;
+      padding: 10px;
     }
-    .sidebar a:hover {
-      background: #0141A1;
+
+    nav ul li a:hover {
+      background-color: #D2153D;
     }
-    /* Contenedor del visor */
-    .content {
+
+    /* Contenido principal */
+    main {
       flex: 1;
-      display: flex;
-      flex-direction: column;
+      padding: 20px;
     }
+
     iframe {
-      flex: 1;
-      border: none;
       width: 100%;
+      height: 90vh;
+      border: 0;
     }
   </style>
 </head>
 <body>
-  <!-- Menú lateral -->
-  <div class="sidebar">
-    <h2>Mis Dashboards</h2>
-    <a href="#" onclick="cargar('d1')">Procura G2G</a>
-    <a href="#" onclick="cargar('d2')">Finanzas</a>
-    <a href="#" onclick="cargar('d3')">Proyectos</a>
-  </div>
+  <!-- Menú vertical -->
+  <nav>
+    <ul>
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#">Dashboard</a></li>
+      <li><a href="#">Reportes</a></li>
+      <li><a href="#">Configuración</a></li>
+    </ul>
+  </nav>
 
-  <!-- Contenido -->
-  <div class="content">
-    <iframe id="visor"></iframe>
-  </div>
-
-  <script>
-    const links = {
-      "d1": "https://app.powerbi.com/reportEmbed?reportId=831c0fba-7ea8-4e5c-8c4c-d3c4efa1fe7d&autoAuth=true&ctid=47d37aff-a534-4d6c-ac3c-2d4786fb5ebf&actionBarEnabled=true&reportCopilotInEmbed=true",
-      "d2": "https://app.powerbi.com/view?r=URL_DEL_TABLERO_2",
-      "d3": "https://app.powerbi.com/view?r=URL_DEL_TABLERO_3"
-    };
-    function cargar(k){ 
-      document.getElementById('visor').src = links[k]; 
-    }
-    // carga inicial
-    cargar('d1');
-  </script>
+  <!-- Contenido principal -->
+  <main>
+    <h1>Seguimiento Procura G2G</h1>
+    <iframe title="Seguimiento Procura G2G"
+      src="https://app.powerbi.com/reportEmbed?reportId=831c0fba-7ea8-4e5c-8c4c-d3c4efa1fe7d&autoAuth=true&ctid=47d37aff-a534-4d6c-ac3c-2d4786fb5ebf&actionBarEnabled=true&reportCopilotInEmbed=true"
+      allowFullScreen="true"></iframe>
+  </main>
 </body>
 </html>
 
